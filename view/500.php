@@ -15,7 +15,8 @@
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/common/header.php'; ?> 
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/common/nav.php'; ?> 
         <div>
-            <h1>Content Title Here</h1>
+            <h1>Server Error</h1>
+            <p>Sorry our server seems to be experiencing some technical difficulties</p>
         </div>
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/common/footer.php'; ?> 
     </div>
