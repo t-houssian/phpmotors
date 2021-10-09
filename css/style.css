@@ -1,4 +1,4 @@
-h1, h2, p, button, li {
+h1, h2, p, button, li, label {
     font-family: 'Gemunu Libre', sans-serif;
 }
 
@@ -9,26 +9,41 @@ h1, h2, p, button, li {
 }
 
 #button-1 {
+    grid-column: 2;
+    display: flex;
     border: none;
     background: none;
+    text-decoration: none;
     letter-spacing: .2rem;
     font-size: 1em;
+    margin-left: auto;
+    margin-right: 1em;
+    align-items: center;
 }
 
-#nav {
+a:link#button-1, a:visited#button-1 {
+    color: #3a3a3a;
+}
+  
+a:hover#button-1 {
+    color: #4c96d7;
+}
+
+
+ul {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
 }
 
-#nav li{
+ul li{
     list-style-type: none;
     color: #ffffff;
     text-align: center;
 }
 
-#nav a {
+ul a {
     color: #ffffff;
     text-decoration: none;
 }
@@ -153,5 +168,8 @@ h1, h2, p, button, li {
         width: 20%;
         height: 1.5em;
         font-size: 1em;
+    }
+    #button-1 {
+        margin-right: 3em;
     }
 }
