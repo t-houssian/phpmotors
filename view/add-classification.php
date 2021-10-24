@@ -9,26 +9,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre&display=swap" rel="stylesheet">
-    <title>Login | phpmotors</title>
+    <title>Add Classification | phpmotors</title>
 </head>
 <body>
     <div class="con">
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/common/header.php'; ?> 
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/common/nav.php'; ?> 
         <div>
-            <h1>Login</h1>
+            <h1 class="vehicle-title">Add Classification</h1>
             <?php
             if (isset($message)) {
             echo $message;
             }
             ?>
-            <form action="/phpmotors/accounts/index.php" method="post">
-                <label for="email">Email:</label><br>
-                <input type="email" name="email" id="email"><br>
-                <label for="password">Password:</label><br>
-                <input type="password" name="password" id="password"><br><br>
-                <input type="submit" value="Login"><br><br>
-                <a  href='/phpmotors/accounts/index.php?action=registration'>No Account? Sign Up!</a>
+            <form method="post" action="/phpmotors/vehicles/index.php">
+                <label for="classificationName">Classification Name:</label><br>
+                <input type="text" name="classificationName" id="classificationName"><br>
+                <input type="submit" value="Add Classification"><br><br>
+                <input type="hidden" name="action" value="add-classification">
             </form>
         </div>
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/common/footer.php'; ?> 
