@@ -24,13 +24,14 @@
             ?>
             <form method="post" action="/phpmotors/accounts/index.php">
                 <label for="firstName">First Name:</label><br>
-                <input type="text" name="clientFirstname" id="firstName"><br>
+                <input type="text" name="clientFirstname" id="firstName" <?php if(isset($clientFirstname)){echo "value='$clientFirstname'";}  ?> required><br>
                 <label for="lastName">Last Name:</label><br>
-                <input type="text" name="clientLastname" id="lastName"><br>
+                <input type="text" name="clientLastname" id="lastName" <?php if(isset($clientLastname)){echo "value='$clientLastname'";}  ?> required><br>
                 <label for="email">Email:</label><br>
-                <input type="email" name="clientEmail" id="email"><br>
+                <input type="email" name="clientEmail" id="email" <?php if(isset($clientEmail)){echo "value='$clientEmail'";}  ?> required><br>
                 <label for="psw">Password:</label><br>
-                <input id="psw" type="password" name="clientPassword"><br><br>
+                <span>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</span>
+                <input id="psw" type="password" name="clientPassword" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"><br><br>
                 <label for="show">Show Password</label>
                 <input type="checkbox" name=show id="show" onclick="myFunction()"><br><br>
                 <input type="submit" value="Sign Up"><br><br>
