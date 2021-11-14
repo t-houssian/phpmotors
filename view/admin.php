@@ -36,6 +36,7 @@ if (!isset($_SESSION['loggedin'])) {
                     echo "<h3>Use this link to manage inventory</h3>";
                     echo "<p><a id='manage' href='/phpmotors/vehicles/index.php'>Vehicle Management</a></p>";
             } ?>  
+            <a id='update-accounts' href='/phpmotors/accounts/index.php?action=client-update'>Update Account Information</a>
         </div>
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/common/footer.php'; ?> 
     </div>

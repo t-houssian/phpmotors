@@ -32,3 +32,26 @@ function buildNav($classifications){
     $navList .= '</ul>';
     return $navList;
 }
+
+// Build the classifications select list 
+function buildClassificationList($classifications){ 
+    $classifList = '<select name="classificationId" id="classificationList">';
+    $classifList .= "<option>Choose a Car Classification</option>";
+    foreach ($classifications as $classification) {
+    $classifList .= "<option value='$classification[classificationId]'";
+    if(isset($classificationId)){
+    if($classification['classificationId'] === $classificationId){
+    $classifList .= ' selected ';
+    }
+    } elseif(isset($invInfo['classificationId'])){
+    if($classification['classificationId'] === $invInfo['classificationId']){
+    $classifList .= ' selected ';
+    }
+    }
+    $classifList .= ">$classification[classificationName]</option>";
+    }
+    $classifList .= '</select>';
+ 
+
+    return $classifList; 
+}

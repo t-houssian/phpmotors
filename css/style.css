@@ -1,4 +1,4 @@
-h1, h2, h3, p, button, li, label, span {
+h1, h2, h3, p, button, li, label, span, #inventoryDisplay, #update-accounts  {
     font-family: 'Gemunu Libre', sans-serif;
 }
 
@@ -34,6 +34,10 @@ h1, h2, h3 {
     margin-left: 0.2em;   
 }
 
+#update-accounts {
+    margin-left: 0.2em;
+}
+
 #button-space {
     letter-spacing: .2rem;
     font-size: 1em;
@@ -59,11 +63,11 @@ h1, h2, h3 {
     align-items: center;
 }
 
-a:link#button-1, a:visited#button-1, a:link#manage, a:visited#manage, a:link#button-2, a:visited#button-2, a:link#button-span-main, a:visited#button-span-main {
+a:link#button-1, a:visited#button-1, a:link#manage, a:visited#manage, a:link#button-2, a:visited#button-2, a:link#button-span-main, a:visited#button-span-main, a:link#update-accounts, a:visited#update-accounts {
     color: #3a3a3a;
 }
   
-a:hover#button-1, a:hover#button-2, a:hover#manage, a:hover#button-span-main {
+a:hover#button-1, a:hover#button-2, a:hover#update-accounts, a:hover#manage, a:hover#button-span-main {
     color: #4c96d7;
 }
 
@@ -176,6 +180,30 @@ nav ul a {
 .pic {
     background-color: #4c96d7;
     height: 60%;
+}
+
+/* For Table */
+
+#inventoryDisplay {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#inventoryDisplay td, #inventoryDisplay th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#inventoryDisplay tr:nth-child(even){background-color: #f2f2f2;}
+
+#inventoryDisplay tr:hover {background-color: #ddd;}
+
+#inventoryDisplay th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4c96d7;
+    color: white;
 }
 
 @media only screen and (min-width: 600px) {
