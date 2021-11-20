@@ -44,9 +44,9 @@ if (!isset($_SESSION['loggedin']) || !($_SESSION['clientData']['clientLevel'] > 
                 <label for="invDescription">Description:</label><br>
                 <textarea name="invDescription" id="invDescription" required><?php if(isset($invDescription)){echo "$invDescription";} elseif(isset($invInfo['invDescription'])) {echo "$invInfo[invDescription]"; } ?></textarea><br><br>
                 <label for="invImage">Image Path:</label><br>
-                <input type="text" name="invImage" id="invImage" value="/images/no-image.png" <?php if(isset($invImage)){echo "value='$invImage'";} elseif(isset($invInfo['invImage'])) {echo "value='$invInfo[invImage]'"; }  ?> required><br>
+                <input type="text" name="invImage" id="invImage" value="/images/vehicles/no-image.png" <?php if(isset($invImage)){echo "value='$invImage'";} elseif(isset($invInfo['invImage'])) {echo "value='$invInfo[invImage]'"; }  ?> required><br>
                 <label for="invThumbnail">Thumbnail Path:</label><br>
-                <input type="text" name="invThumbnail" id="invThumbnail" value="/images/no-image.png" <?php if(isset($invThumbnail)){echo "value='$invThumbnail'";} elseif(isset($invInfo['invThumbnail'])) {echo "value='$invInfo[invThumbnail]'"; } ?> required><br>
+                <input type="text" name="invThumbnail" id="invThumbnail" value="/images/vehicles/no-image.png" <?php if(isset($invThumbnail)){echo "value='$invThumbnail'";} elseif(isset($invInfo['invThumbnail'])) {echo "value='$invInfo[invThumbnail]'"; } ?> required><br>
                 <label for="invPrice">Price:</label><br>
                 <input type="number" min="0.00" step="0.01" name="invPrice" id="invPrice" <?php if(isset($invPrice)){echo "value='$invPrice'";} elseif(isset($invInfo['invPrice'])) {echo "value='$invInfo[invPrice]'"; } ?> required><br>
                 <label for="invStock">Stock:</label><br>

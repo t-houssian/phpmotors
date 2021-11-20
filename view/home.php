@@ -18,7 +18,7 @@
             <h1>Welcome to PHP Motors!</h1>
         </div>
         <div class="container">
-            <img src="images/delorean.jpg" alt="Delorean Image" id="delorean">
+            <img src="images/vehicles/delorean.jpg" alt="Delorean Image" id="delorean">
             <div class="top-left">
                 <h5>DMC Delorean</h5>
                 <p>3 Cup holders</p>

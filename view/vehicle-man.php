@@ -26,7 +26,7 @@ if (isset($_SESSION['message'])) {
         <div>
             <h1>Vehicle Management</h1>
             <ul>
-                <li><a href='/phpmotors/vehicles/index.php?action=classification'>Add Classification</a></li>
+                <li><a href='/phpmotors/vehicles/index.php?action=class'>Add Classification</a></li>
                 <li><a href='/phpmotors/vehicles/index.php?action=vehicle'>Add Vehicle</a></li>
             </ul>
             <?php

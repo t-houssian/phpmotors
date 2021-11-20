@@ -28,11 +28,44 @@ if ($action == NULL){
 }
 
 switch ($action){
-    case 'classification':
+    case 'class':
         include '../view/add-classification.php';
         break;
     case 'vehicle':
         include '../view/add-vehicle.php';
+        break;
+    case 'classification':
+        $classificationName = filter_input(INPUT_GET, 'classificationName', FILTER_SANITIZE_STRING);
+        $vehicles = getVehiclesByClassification($classificationName);
+        if(!count($vehicles)){
+            $message = "<p class='notice'>Sorry, no $classificationName could be found.</p>";
+        } else {
+            $vehicleDisplay = buildVehiclesDisplay($vehicles);
+        }
+        include '../view/classification.php';
+        break;
+    case 'viewVehicle':
+        $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_STRING);
+        // request DB
+        $vehicle = getInvItemInfo($invId);
+        if(!count($vehicle)){
+            $message = "<p class='notice'>Sorry, vehicle could not be found.</p>";
+        } else {
+            $vehicleDetails = buildVehicleInfo($vehicle);
+        }
+        // build html view, accessible from vehicle-detail.php
+        $pageTitle = $vehicle['invMake'] . ' ' . $vehicle['invModel'] . ' details';
+        include '../view/vehicle-detail.php';
+        break;
+    case 'classification':
+        $classificationName = filter_input(INPUT_GET, 'classificationName', FILTER_SANITIZE_STRING);
+        $vehicles = getVehiclesByClassification($classificationName);
+        if(!count($vehicles)){
+            $message = "<p class='notice'>Sorry, no $classificationName could be found.</p>";
+        } else {
+            $vehicleDisplay = buildVehiclesDisplay($vehicles);
+        }
+        include '../view/classification.php';
         break;
     case 'add-classification':
         // Filter and store the data

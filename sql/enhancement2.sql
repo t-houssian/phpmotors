@@ -15,3 +15,9 @@ WHERE carclassification.classificationId = 1;
 DELETE FROM inventory WHERE invMake = 'Jeep' AND invModel = 'Wrangler';
 
 UPDATE inventory SET invImage=CONCAT('/phpmotors', invImage), invThumbnail=CONCAT('/phpmotors', invThumbnail);
+
+-- UPDATE inventory SET invImage = RIGHT(invImage, LENGTH(invImage) - 8)
+-- UPDATE inventory SET invImage = RIGHT(invThumbnail, LENGTH(invThumbnail) - 8)
+
+-- update inventory set invImage = substring(invImage, 5, len(YourField)-3);
+-- UPDATE inventory SET invImage=CONCAT('/phpmotors/images/vehicles/', invImage), invThumbnail=CONCAT('/phpmotors/images/vehicles/', invThumbnail);
