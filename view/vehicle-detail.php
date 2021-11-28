@@ -18,9 +18,17 @@
         <?php if(isset($message)){
             echo $message; }
         ?>
+        <div id="all-info">
         <?php if(isset($vehicleDetails)){
             echo $vehicleDetails;
-        } ?>
+        } 
+        //Display vehicle thumbnails view
+        if (isset($thumbnailsView)) {
+            echo $thumbnailsView;
+        }
+        ?>
+        
+        
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/common/footer.php'; ?> 
     </div>
 </body>

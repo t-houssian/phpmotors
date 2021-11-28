@@ -30,7 +30,7 @@ h1, h2, h3 {
     font-size: 1em;
 }
 
-#manage {
+.manage {
     margin-left: 0.2em;   
 }
 
@@ -63,11 +63,11 @@ h1, h2, h3 {
     align-items: center;
 }
 
-a:link#button-1, a:visited#button-1, a:link#manage, a:visited#manage, a:link#button-2, a:visited#button-2, a:link#button-span-main, a:visited#button-span-main, a:link#update-accounts, a:visited#update-accounts {
+a:link#button-1, a:visited#button-1, a:link.manage, a:visited.manage, a:link#button-2, a:visited#button-2, a:link#button-span-main, a:visited#button-span-main, a:link#update-accounts, a:visited#update-accounts {
     color: #3a3a3a;
 }
   
-a:hover#button-1, a:hover#button-2, a:hover#update-accounts, a:hover#manage, a:hover#button-span-main {
+a:hover#button-1, a:hover#button-2, a:hover#update-accounts, a:hover.manage, a:hover#button-span-main {
     color: #4c96d7;
 }
 
@@ -207,7 +207,7 @@ nav ul a {
 }
 
 /* For vehicle display in classification view */
-#inv-display {
+.inv-display {
     display: flex;
     justify-content: space-between;
     width: 90%;
@@ -216,11 +216,11 @@ nav ul a {
     margin-right: auto;
 }
 
-#inv-display h2{
+.inv-display h2{
     font-size: 1rem;
 }
 
-#inv-display li {
+.inv-display li {
     max-width: 250px;
     flex: 1 0 auto;
     text-align: center;
@@ -230,7 +230,7 @@ nav ul a {
     justify-content: space-between;
 }
     
-#inv-display div {
+.inv-display div {
     width: 100%;
 }
 
@@ -246,7 +246,8 @@ nav ul a {
     
 #inv-detail img {
     grid-row: 1;
-    max-width: 90%;
+    width: 90%;
+    max-width: 500px;
 }
 
 #inv-info {
@@ -288,25 +289,51 @@ nav ul a {
     #button-span-main {
         margin-right: 3em;
     }
-    #inv-display{
+
+    #all-info{
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto;
+        background-color: white;
+    }
+
+    #thumbnails-area {
+        grid-column: 1;
+        grid-row: 1;
+        text-align: center;
+        background-color: white;
+    }
+
+    #thumbnails-area img{
+        width: 90%;
+        max-width: 200px;
+    }    
+
+    #thumbnails-area img:hover {
+        width: 130%;
+    }
+
+    .inv-display{
+        grid-column: 2;
+        grid-row: 1;
         display: flex;
         justify-content: space-between;
         width: 90%;
     }
 
-    #inv-display {
+    .inv-display {
         margin-left: auto;
         margin-right: auto;
     }
     
-    #inv-display li{
+    .inv-display li{
         margin-bottom: .5em;
         border: 1px #ccc solid;
         list-style-type: none;
         flex: 1 1 auto;
     }
     
-    #inv-display li img {
+    .inv-display li img {
         max-width: 100%;
     }
 
@@ -322,7 +349,8 @@ nav ul a {
     }
         
     #inv-detail img {
-        max-width: 50%;
+        width: 70%;
+        max-width: 500px;
     }
 
     #inv-info {

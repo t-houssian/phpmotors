@@ -9,6 +9,7 @@ require_once '../library/connections.php';
 require_once '../model/main-model.php';
 // Get the accounts model
 require_once '../model/vehicles-model.php';
+require_once '../model/uploads-model.php';
 // Get the functions library
 require_once '../library/functions.php';
 
@@ -47,11 +48,15 @@ switch ($action){
     case 'viewVehicle':
         $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_STRING);
         // request DB
-        $vehicle = getInvItemInfo($invId);
+        // $vehicle = getInvItemInfo($invId);
+        $vehicle = getVehicleById($invId);
+        $thumbnails = getVehicleThumbnailsPath($invId);
+
         if(!count($vehicle)){
             $message = "<p class='notice'>Sorry, vehicle could not be found.</p>";
         } else {
             $vehicleDetails = buildVehicleInfo($vehicle);
+            $thumbnailsView = buildThumbnailView($thumbnails);
         }
         // build html view, accessible from vehicle-detail.php
         $pageTitle = $vehicle['invMake'] . ' ' . $vehicle['invModel'] . ' details';

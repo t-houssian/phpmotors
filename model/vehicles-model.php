@@ -138,7 +138,24 @@ function deleteVehicle($invId) {
 
 function getVehiclesByClassification($classificationName){
     $db = phpmotorsConnect();
-    $sql = 'SELECT * FROM inventory WHERE classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName)';
+    $sql = 'SELECT 
+	            * 
+            FROM 
+	            inventory
+            INNER JOIN	
+	            images
+            ON 
+	            inventory.invId = images.invId
+            WHERE 
+	            classificationId 
+            IN 
+	            (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName)
+            AND
+	            imgPrimary = 1
+            AND 
+                imgName 
+            LIKE
+	            "%-tn.%"';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':classificationName', $classificationName, PDO::PARAM_STR);
     $stmt->execute();
@@ -147,3 +164,45 @@ function getVehiclesByClassification($classificationName){
     return $vehicles;
 }
 
+
+function getVehicleById($invId)
+{
+    $db = phpmotorsConnect();
+    $sql = 'SELECT 
+	            * 
+            FROM 
+                inventory 
+            INNER JOIN	
+	            images
+            ON 
+	            inventory.invId = images.invId
+            WHERE 
+                inventory.invId 
+            IN 
+                (SELECT inventory.invId FROM inventory WHERE inventory.invId = :invId)
+            AND
+	            imgPrimary = 1
+            AND 
+                imgName 
+            NOT LIKE
+	            "%-tn.%"';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_STR);
+    $stmt->execute();
+    $vehicle = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $vehicle;
+}
+
+
+// the function will obtain information about all vehicles in inventory.
+
+function getVehicles(){
+	$db = phpmotorsConnect();
+	$sql = 'SELECT invId, invMake, invModel FROM inventory';
+	$stmt = $db->prepare($sql);
+	$stmt->execute();
+	$invInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$stmt->closeCursor();
+	return $invInfo;
+}
