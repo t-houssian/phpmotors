@@ -11,6 +11,8 @@ require_once '../model/main-model.php';
 require_once '../model/accounts-model.php';
 // Get the functions library
 require_once '../library/functions.php';
+// Get the reviews model
+require_once '../model/reviews-model.php';
 
 $classifications = getClassifications();
 $navList = buildNav($classifications);
@@ -184,6 +186,19 @@ switch ($action){
         array_pop($clientData);
         // Store the array into the session
         $_SESSION['clientData'] = $clientData;
+
+        $clientId = $_SESSION['clientData']['clientId'];
+        $reviews = getReviewByClient($clientId);
+
+        // Get Reviews
+        $reviewsDisplay = "";
+        foreach ($reviews as $key => $review) {
+            $reviewsDisplay .= getReviewListView($review);
+        }
+        if($reviewsDisplay == ""){
+            $reviewsDisplay = '<p>No Reviews Found<p>';
+        }
+
         // Send them to the admin view
         include '../view/admin.php';
         exit;
@@ -194,6 +209,21 @@ switch ($action){
         session_destroy();
         header('Location: /phpmotors/accounts/index.php');
     default:
+
+        $clientId = $_SESSION['clientData']['clientId'];
+        $reviews = getReviewByClient($clientId);
+
+        // Get Reviews
+        $reviewsDisplay = "";
+        foreach ($reviews as $key => $review) {
+            $reviewsDisplay .= getReviewListView($review);
+        }
+        if($reviewsDisplay == ""){
+            $reviewsDisplay = '<p>No Reviews Found<p>';
+        }
+
+        $message = $_GET['message'];
+
         include '../view/admin.php';
         break;
 }

@@ -359,3 +359,44 @@ nav ul a {
         margin-right: 1em;
     }
 }
+
+#review-form {
+    border-style: ridge;
+    margin: 1em;
+}
+
+#review-container {
+    border-style: outset;
+    margin: 1em;
+}
+
+.reviewText{
+    margin-left: 1em;
+}
+
+#review-message{
+    color: red;
+}
+
+p#delete-message{
+    color: red;
+    margin-left: 1em;
+}
+
+#delete-form {
+    border-style: ridge;
+    margin: 1em;
+}
+
+#delete-text {
+    background-color: yellow;
+}
+
+#edit-form {
+    border-style: ridge;
+    margin: 1em;
+}
+
+#italic {
+    font-style: italic;
+}

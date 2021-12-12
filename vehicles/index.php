@@ -12,6 +12,8 @@ require_once '../model/vehicles-model.php';
 require_once '../model/uploads-model.php';
 // Get the functions library
 require_once '../library/functions.php';
+// Get the reviews model
+require_once '../model/reviews-model.php';
 
 $classifications = getClassifications();
 $navList = buildNav($classifications);
@@ -60,6 +62,31 @@ switch ($action){
         }
         // build html view, accessible from vehicle-detail.php
         $pageTitle = $vehicle['invMake'] . ' ' . $vehicle['invModel'] . ' details';
+
+        // For the Reivews
+        if (isset($_SESSION['loggedin'])) {
+            if ($_SESSION['loggedin']) {
+              $screenName = getScreenName($_SESSION['clientData']['clientFirstname'], $_SESSION['clientData']['clientLastname']);
+            }
+        }
+
+        $reviews = getReviewByInv($vehicle['invId']);
+        $firstReview = '';
+
+        if (count($reviews) < 1) {
+            $firstReview = '<p id="italic">Be the first to write a review.</p>';
+        }
+
+        $reviewsDetailDisplay = '<div id="review-container">';
+
+        foreach ($reviews as $key => $review) {
+            $reviewsDetailDisplay .= getReviewsView($review);
+        }
+
+        $messageReview = $_GET['messageReview'];
+        
+        $reviewsDetailDisplay .= '</div>';
+
         include '../view/vehicle-detail.php';
         break;
     case 'classification':

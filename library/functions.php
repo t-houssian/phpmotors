@@ -261,3 +261,30 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
      imagedestroy($old_image);
 } // ends resizeImage function
    
+
+/* * ********************************
+*  Functions for reviews
+* ********************************* */
+
+function getScreenName($firstName,$lastName){
+    $screenName=strtoupper(substr($firstName,0,1)).
+    strtoupper(substr($lastName,0,1)).
+    strtolower(substr($lastName,1));
+    return $screenName;
+}
+
+function getReviewsView($review){
+    $screenName=getScreenName($review['clientFirstname'],$review['clientLastname']);
+    $date = date("d F, Y",strtotime($review['reviewDate']));
+    $id = '<div class="review">';
+    $id .="<h4><span>$screenName</span> wrote on $date:</h4>";
+    $id .="<p class='reviewText'>$review[reviewText]</p>";
+    $id .='</div>';
+    return $id;
+}
+
+function getReviewListView($review) {
+    $date = date("d F, Y",strtotime($review['reviewDate']));
+    $id = "<li>$review[invMake] $review[invModel] (Reviewed on $date) <a href='/phpmotors/reviews?action=editReview&reviewId=$review[reviewId]'>Edit</a> | <a href='/phpmotors/reviews?action=confirmDeleteReview&reviewId=$review[reviewId]'>Delete</a></li>";
+    return $id;
+}
